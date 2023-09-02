@@ -149,7 +149,7 @@ peer.on('connection', (conn) => {
         try{
             conn2.on("open",()=>{
                 console.log(`${conn.peer}に接続しました`)
-        
+                sendMedia(userId,conn.peer)
             })
         }catch{}
         caminit(true)
