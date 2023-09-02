@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="/public/style/createPage.css">
+    <link rel="stylesheet" href="/public/style/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        .material-symbols-outlined {
+          font-variation-settings:
+          'FILL' 1,
+          'wght' 1500,
+          'GRAD' 0,
+          'opsz' 48
+        }
+        </style>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+</head>
+<body>
+    <span style="display: none;" id="userId"><%=userId%></span>
+    <script>
+        let Socket = io()
+    </script>
+    <input type="text" id="createRoomPass" style="display: none;"/>
+    <div class="createMainSpace">
+        <div class="createPageTop">
+            <span class="createPageText">Create Meet</span>
+        </div>
+        <div class="createPageCenter">
+            <span class="createNameTitle">Room Name</span>
+             <input type="text" class="createInput" id="createRoomName"/>
+             <button class="createButton" onclick="createRoom()">Create</button>
+        </div>
+    </div>
+
+
+    <script src="/public/src/createPage/createMain.js"></script>
+    <script src="/public/src/createPage/socketFuns.js"></script>
+
+</body>
+</html>

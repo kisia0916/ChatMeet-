@@ -1,0 +1,138 @@
+body{
+    margin: 0;
+    background-color: #282a36;
+    overflow-y: hidden;
+    height: 100%;
+    display: flex;
+    position: relative;
+}
+.createPageText{
+    display: flex;
+    margin: auto;
+    color: #50FA7B;
+    font-family: 'Kanit', sans-serif;
+
+    font-weight:bolder;
+    margin-top: 25px;
+    font-size: 194%;
+}
+.createPageTop{
+    width: 100%;
+    display: flex;
+}
+.createMainSpace{
+    width: 90%;
+    max-width: 500px;
+    height: 100vh;
+    /* background-color: red; */
+    margin: auto;
+    /* background-color: red; */
+}
+.createPageCenter{
+    width: 90%;
+    max-width: 500px;
+    margin: auto;
+    position: absolute;
+    top: 33%;
+    
+    left: 50%;
+    -webkit-transform : translate(-50%,-50%);
+    transform : translate(-50%,-50%);
+}
+.createInput{
+    width: 100%;
+    height:35px;
+    border-radius: 5px;
+    border: none;
+    background-color: #58585860;
+    margin-top: 8px;
+    outline: none;
+    color: white;
+    border: solid 1px #edff57;
+    font-size: 120%;
+}
+.createButton{
+    background-color: #edff57;
+    font-family: 'Kanit', sans-serif;
+
+    width: 101%;
+    border: none;
+    height: 38px;
+    border-radius: 5px;
+    margin-top: 27px;
+    font-size: 130%;
+    font-weight:bolder;
+    cursor: pointer;
+}
+.createNameTitle{
+    color: #edff57;
+    font-size: 110%;
+    margin-bottom: 3px;
+    font-family: 'Kanit', sans-serif;
+
+}
+.createNameTitle2{
+    display: flex;
+    color: #edff57;
+    font-size: 110%;
+    margin-top: 20px;
+    font-family: 'Kanit', sans-serif;
+
+}
+.mediaSets{
+    font-family: 'Kanit', sans-serif;
+    display: flex;
+    margin-top: 8px;
+}
+.camText{
+    
+}
+.onOffswitchC{
+    width: 95px;
+    height: 38px;
+    margin-top: 8px;
+    border-radius: 5px;
+    /* background-color: red; */
+    display: flex;
+    background-color: #394067;
+    background-color: #313657;
+    border: none;
+    cursor: pointer;
+    /* color: white; */
+    
+}
+.onOffswitchM{
+    width: 95px;
+    height: 38px;
+    margin-top: 8px;
+    border-radius: 5px;
+    /* background-color: red; */
+    display: flex;
+    background-color: #313657;
+    /* color: white; */
+    margin-left: 15px;
+    border: none;
+    cursor: pointer;
+}
+.meetPageCamIcon{
+    color: white;
+    font-size: 170%;
+    margin-top: 4px;   
+}
+.ONtext{
+    font-size: 152%;
+    color: #50FA7B;
+    font-family: 'Kanit', sans-serif;
+    margin-left: 8px;
+    /* margin-top: 1px; */
+}
+.meetPageMikeIcon{
+    color: white;
+    font-size: 140%;
+    margin-top: 6px;
+}
+.meetPageHeadIcon{
+    color: white;
+    font-size: 140%;
+    margin-top: 6px;
+}

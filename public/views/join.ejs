@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <link rel="stylesheet" href="/public/style/join.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <script>
+        let Socket = io()
+    </script>
+    <div class="createMainSpace">
+        <div class="createPageTop">
+            <span style="display: none;" class="userId"><%-userId%></span>
+            <span style="display: none;" class="roomId"><%-roomId%></span>
+            <span class="createPageText">Join to <%=roomName%></span>
+        </div>
+        <div class="createPageCenter">
+            <span class="createNameTitle">User Name</span>
+             <input type="text" class="createInput"/>
+            <span class="createNameTitle2">Media Settings</span>
+            <div class="mediaSets">
+                <button class="onOffswitchC" onclick="changeCam()">
+                    <div style="display: flex; margin:auto">
+                        <i class="ri-vidicon-fill meetPageCamIcon"></i>
+                        <span class="ONtext camText">ON</span>
+                    </div>
+                </button>
+                <button class="onOffswitchM" onclick="changeMike()">
+                    <div style="display: flex; margin:auto">
+                        <i class="ri-mic-fill meetPageMikeIcon"></i>
+                        <span class="ONtext mikeText">ON</span>
+                    </div>
+                </button>
+                <button class="onOffswitchM" onclick="changeAudio()">
+                    <div style="display: flex; margin:auto">
+                        <i class="ri-customer-service-fill meetPageHeadIcon"></i>
+                        <span class="ONtext headText">ON</span>
+                    </div>
+                </button>
+            </div>
+             <button class="createButton" onclick="join()">Join</button>
+        </div>
+    </div>
+    <script src="/public/src/joinPage/join.js"></script>
+
+</body>
+</html>

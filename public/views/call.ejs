@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <link rel="stylesheet" href="/public/style/call.css">
+    <script>
+        $(function () {
+            $('body').outerHeight($(window).height());
+        });
+        $(window).on('resize', function () {
+            winH = $(window).height();
+            $('body').outerHeight(winH);
+        });
+    </script>
+</head>
+
+<body>
+    <script>
+        let Socket = io()
+    </script>
+
+    <span id="userId" style="display: none;"><%=userId%></span>
+    <span id="roomId" style="display: none;"><%=roomId%></span>
+    <span id="flg" style="display: none;"><%=flg%></span>
+
+    <div id="audioWindowsWaerpp" style="display: none;"></div>
+
+    <div class="roomTop">
+        <span class="roomTopText">
+            <%=roomName%>
+        </span>
+    </div>
+    <div class="roomCenter">
+        <div class="posionButtons">
+            <button class="audioMuteButton">
+                <span class="material-symbols-outlined linkIcon">
+                    link
+                </span>
+            </button>
+            <div class="buttonSpace">
+
+            </div>
+            <button class="LinkCoPyButton" onclick="changeAudios()">
+                <span class="material-symbols-outlined audioIcon">
+                    headphones
+                </span>
+                <span class="material-symbols-outlined audioIcon2" style="display: none;">
+                    headset_off
+                </span>
+            </button>
+        </div>
+        <div class="roomCenterMain">
+
+
+
+        </div>
+    </div>
+    <div class="roomBottom">
+        <div class="roomButtonS">
+            <div class="camChangeButtonWarpp">
+                <button class="camChangeButton" onclick="camChange()"><i
+                        class="ri-vidicon-fill meetPageCamIcon"></i><span class="camChangeText">ON</span></button>
+            </div>
+            <div class="mikeChangeButtonWarpp">
+                <button class="mikeChangeButton" onclick="changeMike()"><i
+                        class="ri-mic-fill meetPageMikeIcon"></i><span class="mikeChangeText">ON</span></button>
+            </div>
+            <div class="lateRoomButtonWarpp">
+                <button class="lateRoomButton" onclick="moveMeet()"><span class="lateRoomText">退室</span></button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="/public/doms/audioDoms.js"></script>
+
+    <script src="/public/src/callPage/call.js"></script>
+    <script src="/public/src/callPage/p2p.js"></script>
+    <script src="/public/doms/videoWindows.js"></script>
+
+</body>
+
+</html>

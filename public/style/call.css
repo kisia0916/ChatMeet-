@@ -1,0 +1,530 @@
+body{
+    margin: 0;
+    background-color: #282a36;
+    font-family: 'Kanit', sans-serif;
+    overflow-y: hidden;
+    height: 100%;
+    position:relative;
+
+}
+.roomTop{
+    width: 100%;
+    height: 60px;
+    background-color: #1f222a;
+    display: flex;
+}
+.roomTopText{
+    font-size: 170%;
+    color: white;
+    font-weight: bolder;
+    margin: auto;
+}
+.roomCenter{
+    height: calc(100% - 60px - 63px);
+    width: 100%;
+    display: flex;
+}
+.roomBottom{
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+    display: flex;
+    background-color: #383b4b;
+}
+.roomButtonS{
+    display: flex;
+    margin: auto;
+}
+.camChangeButton{
+    width: 107px;
+    height: 40px;
+    margin-right: 15px;
+    border-radius: 9px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    background-color: #1d1f27;
+}
+.mikeChangeButton{
+    width: 107px;
+    height: 40px;
+    margin-right: 15px;
+    border-radius: 9px;
+    border: none;
+    display: flex;
+    cursor: pointer;
+    background-color: #1d1f27;
+
+}
+.lateRoomButton{
+    width: 107px;
+    height: 39px;
+    border-radius: 9px;
+    border: none;
+    cursor: pointer;
+    background-color: #ff3838;
+    border: solid 2px rgb(255, 34, 34);
+}
+@media(max-width:500px){
+    .camChangeButton{
+        margin-right: 12px;
+    }
+    .mikeChangeButton{
+        margin-right: 12px;
+    }
+    .lateRoomButton{
+    }
+}
+.meetPageCamIcon{
+    color: white;
+    font-size: 190%;
+    margin-top: 6px;
+    margin-left: 12px;
+}
+.camChangeText{
+    color: #50FA7B;
+    font-size: 150%;
+    margin-top: 7px;
+    margin-left: 9px;
+}
+.mikeChangeText{
+    color: #50FA7B;
+    font-size: 150%;
+    margin-top: 7px;
+    margin-left: 9px;
+}
+.meetPageMikeIcon{
+    color: white;
+    font-size: 170%;
+    margin-top: 7px;
+    margin-left: 12px;
+}
+.lateRoomText{
+    font-size: 140%;
+    font-weight: bolder;
+    color: white;
+}
+.roomCenter{
+    display: flex;
+}
+.roomCenterMain{
+    /* overflow-x: scroll; */
+    /* margin-left: 5px; */
+    margin: auto;
+}
+.videoWindowMain{
+    
+
+}
+.videoWindowWarpp{
+
+
+    background-color: #434653;
+    display: flex;
+    margin: auto;
+    border-radius: 4px;
+    /* position:absolute; */
+    /* margin-top: 10%; */
+}
+.videoWindowNameWarpp{
+    width: 100%;
+    display: flex;
+}
+.videoWindowName{
+    color: white;
+    display: flex;
+    margin: auto;
+}
+::-webkit-scrollbar {
+    width: 16px;
+    height: 16px;
+    margin-bottom:130px;
+    }
+    ::-webkit-scrollbar-track {
+    background-color: rgba(116, 162, 200, 0.3);
+    /* border-radius: 80px; */
+    }
+    ::-webkit-scrollbar-thumb {
+    background: #666f87;
+    border-radius: 10px;
+    width: 130px;
+    }
+    @media(max-width:444px){
+        .roomCenterMain{
+            /* overflow-x: scroll; */
+            /* margin-left: 5px; */
+            width: 100%;
+        }
+        .videoWindowMain{
+            width: 100%;
+        }
+        .videoWindowWarpp{
+            width: 320px;
+            height:208px;
+            background-color: #434653;
+
+        }
+        .firstVideo{
+            margin-top: 10px;
+        }
+        .roomCenter{
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        .videoWindowNameWarpp{
+            margin-top: 1px;
+            margin-bottom: 5px;
+        }
+        .videoWindowName{
+            font-size: 140%;
+    
+        }
+        .videoWindowMain{
+
+        }
+        .roomButtonS{
+            margin-top: 8px;
+
+        }
+        .posionButtons{
+            position:absolute;
+            /* margin-top: 100%; */
+            bottom: 70px;
+            right: 22px;
+            display: flex;
+        }
+        .buttonSpace{
+            width: 5px;
+        }
+        .audioMuteButton{
+        
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background-color: #4b4f64c7;
+
+
+        }
+        .LinkCoPyButton{
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background-color: #4b4f64c7;
+
+
+
+
+        }
+        .meetPageCamIcon2{
+            font-size: 115%;
+            margin-top: 9px;
+            margin-left: 5px;
+        }
+        .audioIcon4{
+            font-size: 120%;
+            margin-top: 9px;
+            margin-left: 5px;
+        }
+    }
+    @media(max-width:445px) and  (min-width:381px){
+        .roomCenterMain{
+            /* overflow-x: scroll; */
+            /* margin-left: 5px; */
+            width: 100%;
+        }
+        .videoWindowMain{
+            width: 100%;
+        }
+        .videoWindowWarpp{
+            width: 350px;
+            height:228px;
+            background-color: #434653;
+
+        }
+        .firstVideo{
+            margin-top: 10px;
+        }
+        .roomCenter{
+            overflow-y: auto;
+            overflow-x: hidden;
+        }
+        .videoWindowNameWarpp{
+            margin-top: 1px;
+            margin-bottom: 5px;
+        }
+        .videoWindowName{
+            font-size: 140%;
+    
+        }
+        .videoWindowMain{
+
+        }
+        .roomButtonS{
+            margin-top: 8px;
+
+        }
+        .posionButtons{
+            position:absolute;
+            bottom: 70px;
+            right: 22px;
+
+            /* position: fixed; */
+
+            display: flex;
+        }
+        .buttonSpace{
+            margin-top: 5px;
+
+        }
+        .audioMuteButton{
+        
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background-color: #4b4f64c7;
+
+
+
+        }
+        .LinkCoPyButton{
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background-color: #4b4f64c7;
+
+
+
+        }
+        .meetPageCamIcon2{
+            font-size: 115%;
+            margin-top: 9px;
+            margin-left: 5px;
+        }
+        .audioIcon4{
+            font-size: 120%;
+            margin-top: 9px;
+            margin-left: 5px;
+        }
+    }
+@media(max-width:630px) and (min-width:446px){
+    .roomCenterMain{
+        /* overflow-x: scroll; */
+        /* margin-left: 5px; */
+    }
+    .videoWindowWarpp{
+        width: 400px;
+        height:260px;
+    }
+    .firstVideo{
+        margin-top: 10px;
+    }
+    .roomCenter{
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    .videoWindowNameWarpp{
+        margin-top: 1px;
+        margin-bottom: 5px;
+    }
+    .videoWindowName{
+        font-size: 140%;
+
+    }
+    .videoWindowMain{
+        margin-left: 17px;
+        margin-right: 17px;
+    }
+    .roomButtonS{
+        margin-top: 8px;
+    }
+    .posionButtons{
+        position:absolute;
+        bottom: 70px;
+        right: 22px;
+
+        display: flex;
+    }
+    .buttonSpace{
+        width: 7px;
+    }
+    .audioMuteButton{
+    
+        width: 47px;
+        height: 47px;
+        border-radius: 10px;
+        background-color: #4b4f64c7;
+
+
+
+    }
+    .LinkCoPyButton{
+        width: 47px;
+        height: 47px;
+        border-radius: 10px;
+        background-color: #4b4f64c7;
+
+
+
+    }
+    .meetPageCamIcon2{
+        font-size: 115%;
+        margin-top: 9px;
+        margin-left: 5px;
+    }
+    .audioIcon4{
+        font-size: 120%;
+        margin-top: 9px;
+        margin-left: 5px;
+    }
+}
+@media(min-width:631px){
+    .roomCenterMain{
+        /* overflow-x: scroll; */
+        /* margin-left: 5px; */
+        display: flex;
+    }
+    .videoWindowWarpp{
+        width: 600px;
+        height: 500px;
+    }
+    .roomCenter{
+        overflow-y: hidden;
+        overflow-x: auto;
+        display: flex;
+    }
+    .videoWindowNameWarpp{
+        margin-top: 10px;
+    }
+    .videoWindowName{
+        font-size: 160%;
+        
+    }
+    .videoWindowMain{
+        margin-left: 17px;
+        margin-right: 17px;
+    }
+    .posionButtons{
+        position:absolute;
+        /* bottom: 85px; */
+        display: flex;
+        bottom: 95px;
+        right: 22px;
+
+    }
+    .buttonSpace{
+        width: 8px;
+    }
+    .audioMuteButton{
+    
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+        background-color: #4b4f64c7;
+
+
+    }
+    .LinkCoPyButton{
+        width: 50px;
+        height: 50px;
+        border-radius: 10px;
+        background-color: #4b4f64c7;
+
+
+
+    }
+    .roomCenter{
+        height: calc(100% - 70px - 63px);
+        width: 100%;
+        display: flex;
+    }
+    .roomBottom{
+        bottom: 0;
+        height: 70px;
+        width: 100%;
+        display: flex;
+        background-color: #383b4b;
+    }
+    .meetPageCamIcon2{
+        font-size: 128%;
+        margin-top: 9px;
+        margin-left: 7px;
+    }
+    .audioIcon4{
+        font-size: 128%;
+        margin-top: 9px;
+        margin-left: 7px;
+    }
+}
+.videoMainWindow{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+}
+.linkIcon {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 550,
+    'GRAD' 30,
+    'opsz' 50,;
+    margin: auto;
+  }
+  .audioIcon{
+      margin: auto;
+  }
+  .audioIcon2{
+      margin: auto;
+      color: red;
+  }
+  .posionButtons{
+      position:absolute;
+      display: flex;
+  }
+  .buttonSpace{
+  }
+  .audioMuteButton{
+      border: none;
+      border-radius: 10px;
+      display: flex;
+      color: rgb(255, 255, 104);
+      cursor: pointer;
+      /* display: flex; */
+      /* background-color: rgba(0, 0, 255, 0.704); */
+  }
+  .LinkCoPyButton{
+      border: none;
+      display: flex;
+      border-radius: 10px;
+      color: rgb(255, 255, 104);
+      cursor: pointer;
+      /* background-color: rgba(0, 0, 255, 0.704); */
+  }
+.videoStates3{
+    /* position: relative; */
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    margin: auto;
+}
+.videoWindowName{
+    display: flex;
+    /* margin: auto; */
+}
+.videoNameSSS{
+    display: flex;
+    margin: auto;
+    /* left: 0; */
+}
+.meetPageCamIcon2{
+    /* font-size: 115%; */
+    color: white;
+    margin-top: 9px;
+    color: rgb(255, 91, 91);
+    margin-left: 5px;
+}
+.audioIcon4{
+    /* font-size: 120%; */
+    color: white;
+    margin-top: 9px;
+    color: rgb(255, 91, 91);
+    margin-left: 5px;
+}
