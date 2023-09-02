@@ -34,7 +34,7 @@ const roomListDom = (roomList)=>{
                             person
                         </span>
                         <span class="roomCardNum">${i.userList.length}</span>
-                        <textarea id="roomIdAria${i.roomId}" style="display:none">${domain}${i.roomId}</textarea>
+                        <textarea id="roomIdAria${i.roomId}" style="display:none">${domain+i.roomId}</textarea>
                         <button id="${i.roomId}" class="RoomListlinkCopyButton" onclick="copyId(this.id,event)"><span class="material-symbols-outlined">
                         link
                     </span></button>
