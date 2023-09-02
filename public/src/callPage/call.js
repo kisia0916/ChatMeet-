@@ -162,9 +162,11 @@ const audioInit = (flg)=>{
                     if(!soundAudioFLG){
                         // Socket.emit("soundAudio",{userId:userId,roomId:roomId})
                         soundAudioFLG = true
-                        myWarpp.style.border = "solid 1px #50FA7B"
-                        console.log("音声を検知")
+                        if(mikeFlg){
+                            myWarpp.style.border = "solid 1px #50FA7B"
                         sendMess()
+                        }
+                        console.log("音声を検知")
                     }
                     // mikeStream = stream
                 }else{
