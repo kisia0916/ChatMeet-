@@ -28,14 +28,16 @@ const join = ()=>{
     let userName = document.querySelector(".createInput").value
     let userId = document.querySelector(".userId").textContent
     let roomId = document.querySelector(".roomId").textContent
-    userName = sanitizeInput(userName)
-    window.sessionStorage.setItem(["cam"],cam)
-    window.sessionStorage.setItem(["mike"],mike)
-    window.sessionStorage.setItem(["audio"],audio)
-    window.sessionStorage.setItem(["roomId"],roomId)
-    window.sessionStorage.setItem(["userId"],userId)
+    if(userName){
+        userName = sanitizeInput(userName)
+        window.sessionStorage.setItem(["cam"],cam)
+        window.sessionStorage.setItem(["mike"],mike)
+        window.sessionStorage.setItem(["audio"],audio)
+        window.sessionStorage.setItem(["roomId"],roomId)
+        window.sessionStorage.setItem(["userId"],userId)
 
-    Socket.emit("joinUser",{roomId:roomId,userId:userId,userName:userName})
+        Socket.emit("joinUser",{roomId:roomId,userId:userId,userName:userName})
+    }
 }
 Socket.on("moveCall",(data)=>{
     let room = document.querySelector(".roomId").textContent

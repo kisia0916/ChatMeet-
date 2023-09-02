@@ -96,7 +96,7 @@ Socket.on("joinUser",(data)=>{
     try{
         videoWarpp.classList.remove("firstVideo")
     }catch{}
-    videoWarpp.insertAdjacentHTML('beforebegin',videoWindow2(data.userId,data.listData.name,camStyle,mkStyle,headStyle))
+    videoWarpp.insertAdjacentHTML('beforebegin',videoWindow2(data.userId,data.listData.name,"none","none","none"))
     let audioWarpp = document.querySelector(".firstAudio")
     try{
         audioWarpp.classList.remove("firstAudio")
@@ -134,6 +134,7 @@ peer.on('connection', (conn) => {
     if(!dataFLG){
         // firstFLG2 = false
         console.log(`${conn.peer}からの接続あり`);
+        sendMedia(userId,conn.peer)
         let flg = true
         let conn2
         conList.forEach((i)=>{
@@ -188,3 +189,24 @@ const sendMess = ()=>{
         }
     })
 }
+const sendMedia = (MyId,userId)=>{
+    Socket.emit("sendMedias",{myId:MyId,userId:userId,cam:camFlg,mike:mikeFlg,head:headFlg})
+}
+Socket.on("sendMediaReturn",(data)=>{
+    console.log(data)
+    let userId2 = data.myId
+    if(userId2 != userId){
+        let cam = document.getElementById("camState"+userId2)
+        let mike = document.getElementById("mkState"+userId2)
+        let head = document.getElementById("headState"+userId2)
+        if(!data.cam){
+            cam.style.display = "block"
+        }
+        if(!data.mike){
+            mike.style.display = "block"
+        }
+        if(!data.head){
+            head.style.display = "block"
+        }
+    }
+})

@@ -13,7 +13,9 @@ if(!window.sessionStorage.getItem(["userId"])){
 const createRoom = ()=>{
     let roomName = document.getElementById("createRoomName").value
     let roomPass = document.getElementById("createRoomPass").value
-    Socket.emit("createRoom",{host:userId,roomName:roomName,pass:roomPass})
+    if(roomName){
+        Socket.emit("createRoom",{host:userId,roomName:roomName,pass:roomPass})
+    }
 }
 
 Socket.on("roomDatas",(data)=>{

@@ -299,6 +299,9 @@ io.on("connection",(socket)=>{
         console.log(data.roomId)
         io.to(data.roomId).emit("mediaChange",data)
     })
+    socket.on("sendMedias",(data)=>{
+        io.to(data.userId).emit("sendMediaReturn",data)
+    })
     socket.on("disconnect",()=>{
         roomId = ""
         userList.forEach((i,index)=>{
