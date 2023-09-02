@@ -1,3 +1,4 @@
+const domain = "https://chatm-dffac3792890.herokuapp.com/"
 function sanitizeInput(input) {
     // 文字列内の特殊文字をエスケープします
     return input.replace(/[&<>"'/]/g, (match) => {
@@ -33,7 +34,7 @@ const roomListDom = (roomList)=>{
                             person
                         </span>
                         <span class="roomCardNum">${i.userList.length}</span>
-                        <textarea id="roomIdAria${i.roomId}" style="display:none">${i.roomId}</textarea>
+                        <textarea id="roomIdAria${i.roomId}" style="display:none">${domain}${i.roomId}</textarea>
                         <button id="${i.roomId}" class="RoomListlinkCopyButton" onclick="copyId(this.id,event)"><span class="material-symbols-outlined">
                         link
                     </span></button>
