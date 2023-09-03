@@ -18,7 +18,7 @@ const roomListDom = (roomList)=>{
     let html = roomList.map((i)=>{
         i.roomName = sanitizeInput(i.roomName)
         let textColor = "white"
-        if(i.userList.length>=6){
+        if(i.userList.length>=7){
             textColor = "#FF5E5E"
         }
         return `

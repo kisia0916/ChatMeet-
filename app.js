@@ -16,6 +16,7 @@ const callPage = fs.readFileSync("./public/views/call.ejs","utf-8")
 const createPage = fs.readFileSync("./public/views/createRoom.ejs","utf-8")
 const catchPage = fs.readFileSync("./public/views/catchPage.ejs","utf-8")
 const joinPage = fs.readFileSync("./public/views/join.ejs","utf-8")
+const notFound = fs.readFileSync("./public/views/notFound.ejs","utf-8")
 
 const createData = require("./backSrc/createData")
 
@@ -51,6 +52,10 @@ app.use("/public",express.static("public"))
 
 app.get("/",(req,res)=>{
     console.log("index")
+    res.writeHead(302, {
+        'Location': '/main'
+    });
+    res.end();
 })
 
 app.get("/joinset/:id",(req,res)=>{
@@ -118,7 +123,7 @@ app.get("/call/:id",(req,res)=>{
     roomList.forEach((i)=>{
         if(i.roomId == req.params.id){
             room = i.userList
-            if(i.userList.length>=6){
+            if(i.userList.length>=7){
                 isPNum = false
             }
         }
@@ -214,6 +219,14 @@ app.get("/main",(req,res)=>{
     res.write(renderPage)
     res.end()
 }) 
+app.use((req, res, next) => {
+    let renderPage = ejs.render(notFound,{
+
+    })
+    res.writeHead(200,{"Content-Type":"text/html"})
+    res.write(renderPage)
+    res.end()
+  });
 io.on("connection",(socket)=>{
     let userId = ""
     let roomID = ""
