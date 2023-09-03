@@ -17,6 +17,10 @@ const roomListDom = (roomList)=>{
     console.log(roomList)
     let html = roomList.map((i)=>{
         i.roomName = sanitizeInput(i.roomName)
+        let textColor = "white"
+        if(i.userList.length>=6){
+            textColor = "#FF5E5E"
+        }
         return `
         <div class="topSpace"></div>
             <div class="roomCard">
@@ -33,7 +37,7 @@ const roomListDom = (roomList)=>{
                         <span class="material-symbols-outlined roomPersonIcon">
                             person
                         </span>
-                        <span class="roomCardNum">${i.userList.length}</span>
+                        <span class="roomCardNum" style="color:${textColor}">${i.userList.length}</span>
                         <textarea id="roomIdAria${i.roomId}" style="display:none">${domain+i.roomId}</textarea>
                         <button id="${i.roomId}" class="RoomListlinkCopyButton" onclick="copyId(this.id,event)"><span class="material-symbols-outlined">
                         link

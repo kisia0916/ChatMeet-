@@ -25,7 +25,7 @@ let roomList = [ {
     roomName: 'seccamp23 Meet',
     host: '36019a51-1371-4d43-8521-76cde88c7a61',
     pass: 'aa',
-    userList: [],
+    userList: ["a",],
     public: true,
     icon:"/public/icons/icon1.png"
   }]
@@ -113,10 +113,14 @@ app.get("/join/:id",(req,res)=>{
 app.get("/call/:id",(req,res)=>{
     console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
     let isRoom = true
+    let isPNum = true
     let room = null
     roomList.forEach((i)=>{
         if(i.roomId == req.params.id){
             room = i.userList
+            if(i.userList.length>=6){
+                isPNum = false
+            }
         }
     })
     console.log(room)
@@ -127,7 +131,7 @@ app.get("/call/:id",(req,res)=>{
             }
         })
     }
-    if(req.session.userId && req.session.callFlg && isRoom){
+    if(req.session.userId && req.session.callFlg && isRoom && isPNum){
         req.session.callFlg = false
         let roomId = req.params.id
         console.log(roomId)
