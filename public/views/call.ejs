@@ -20,6 +20,7 @@
             winH = $(window).height();
             $('body').outerHeight(winH);
         });
+        const domain = "https://chatm-dffac3792890.herokuapp.com/join/" 
     </script>
 </head>
 
@@ -41,7 +42,8 @@
     </div>
     <div class="roomCenter">
         <div class="posionButtons">
-            <button class="audioMuteButton">
+            <textarea id="roomIdAria" style="display: none;">https://chatm-dffac3792890.herokuapp.com/join/<%=roomId%></textarea>
+            <button class="audioMuteButton" onclick="copyId()">
                 <span class="material-symbols-outlined linkIcon">
                     link
                 </span>

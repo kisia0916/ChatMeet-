@@ -410,6 +410,10 @@ const moveMeet = ()=>{
 const sendState = (media,state)=>{
     Socket.emit("mediaState",{userId:userId,media:media,state:state,roomId:roomId})
 }
+const copyId = ()=>{
+    let aria = document.getElementById("roomIdAria").value
+    navigator.clipboard.writeText(aria).then()
+}
 Socket.on("camState",(data)=>{
     console.log("aaaaklkkkaiojo")
     let audioDom = document.getElementById("video:"+data.userId)
