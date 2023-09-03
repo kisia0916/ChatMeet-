@@ -61,6 +61,9 @@ Socket.on("setUserNew",async(data)=>{
     let conCO = 0
     userList = data.userList
     unshiftList(userList)
+    console.log("kokokokooko1")
+    console.log(data)
+    sendMedia(userId)
     let videoWarpp = document.querySelector(".roomCenterMain")
     let audioWarpp = document.getElementById("audioWindowsWaerpp")
     audioWarpp.innerHTML = audioDoms(userList,p2pID)
@@ -92,11 +95,14 @@ Socket.on("setUserNew",async(data)=>{
 })
 Socket.on("joinUser",(data)=>{
     userList.push(data.listData)
+    console.log("kokokokooko2")
+    console.log(data)
+    sendMedia2(userId,data.userId)
     let videoWarpp = document.querySelector(".firstVideo")
     try{
         videoWarpp.classList.remove("firstVideo")
     }catch{}
-    videoWarpp.insertAdjacentHTML('beforebegin',videoWindow2(data.userId,data.listData.name,"none","none","none"))
+    videoWarpp.insertAdjacentHTML('beforebegin',videoWindow2(data.userId,data.listData.name,camStyle,mkStyle,headStyle))
     let audioWarpp = document.querySelector(".firstAudio")
     try{
         audioWarpp.classList.remove("firstAudio")
@@ -106,6 +112,7 @@ Socket.on("joinUser",(data)=>{
     const conn = peer.connect(data.userId)
     conList.push(conn)
     conn.on("open",()=>{
+        // sendMedia2(userId,conn.peer)
         console.log(`${data.userId}に接続しました`)
         sendVideo2(camStream,data.userId)
         sendAudio2(mikeStream,data.userId)
@@ -134,7 +141,6 @@ peer.on('connection', (conn) => {
     if(!dataFLG){
         // firstFLG2 = false
         console.log(`${conn.peer}からの接続あり`);
-        sendMedia(userId,conn.peer)
         let flg = true
         let conn2
         conList.forEach((i)=>{
@@ -188,24 +194,41 @@ const sendMess = ()=>{
         }
     })
 }
-const sendMedia = (MyId,userId)=>{
-    Socket.emit("sendMedias",{myId:MyId,userId:userId,cam:camFlg,mike:mikeFlg,head:headFlg})
+const sendMedia = (MyId)=>{
+    Socket.emit("sendMedias",{myId:MyId,cam:camFlg,mike:mikeFlg,head:headFlg})
+}
+const sendMedia2 = (MyId,userId)=>{
+    console.log(camFlg)
+    Socket.emit("sendMedias2",{myId:MyId,userId:userId,cam:camFlg,mike:mikeFlg,head:headFlg})
 }
 Socket.on("sendMediaReturn",(data)=>{
     console.log(data)
+
     let userId2 = data.myId
     if(userId2 != userId){
+        console.log("Ooooooooooooooooooooooooooooooooooooooooooo")
         let cam = document.getElementById("camState"+userId2)
         let mike = document.getElementById("mkState"+userId2)
         let head = document.getElementById("headState"+userId2)
         if(!data.cam){
+            console.log("test1")
             cam.style.display = "block"
+        }else{
+            cam.style.display = "none"
         }
         if(!data.mike){
+            console.log("test2")
+
             mike.style.display = "block"
+        }else{
+            mike.style.display = "none"
         }
         if(!data.head){
+            console.log("test3")
+
             head.style.display = "block"
+        }else{
+            head.style.display = "none"
         }
     }
 })

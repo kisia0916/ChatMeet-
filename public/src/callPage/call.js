@@ -80,6 +80,7 @@ let camStyle = "none"
 let mkStyle = "none"
 let headStyle = "none"
 if(window.sessionStorage.getItem(["cam"]) == "true"){
+    console.log("opopopkpokopkopkop")
     camFlg = true
 
 }else{

@@ -46,7 +46,7 @@ const videoWindow = (userList,userId,style1,style2,style3)=>{
                     </div>
                     <div class="videoWindowNameWarpp">
                     <div class="videoNameSSS">
-                    <span class="videoWindowName">${i.name}</span><i class="ri-camera-off-fill meetPageCamIcon2 stateCam" style="display:${style1}" id="camState${i.userId}"></i><i class="ri-mic-off-fill meetPageCamIcon2 stateMk" style="display:${style2}" id="mkState${i.userId}"></i><span class="material-symbols-outlined audioIcon4 stateHead" style="display:${style3}" id="headState${i.userId}">
+                    <span class="videoWindowName">${i.name}</span><i class="ri-camera-off-fill meetPageCamIcon2 stateCam" style="display:none" id="camState${i.userId}"></i><i class="ri-mic-off-fill meetPageCamIcon2 stateMk" style="display:none" id="mkState${i.userId}"></i><span class="material-symbols-outlined audioIcon4 stateHead" style="display:none" id="headState${i.userId}">
                     headset_off
                 </span>
                 </div>
@@ -61,7 +61,7 @@ const videoWindow = (userList,userId,style1,style2,style3)=>{
                     </div>
                     <div class="videoWindowNameWarpp">
                     <div class="videoNameSSS">
-                    <span class="videoWindowName">${i.name}</span><i class="ri-camera-off-fill meetPageCamIcon2 stateCam" style="display:${style1}" id="camState${i.userId}"></i><i class="ri-mic-off-fill meetPageCamIcon2 stateMk" style="display:${style2}" id="mkState${i.userId}"></i><span class="material-symbols-outlined audioIcon4 stateHead" style="display:${style3}" id="headState${i.userId}">
+                    <span class="videoWindowName">${i.name}</span><i class="ri-camera-off-fill meetPageCamIcon2 stateCam" style="display:none" id="camState${i.userId}"></i><i class="ri-mic-off-fill meetPageCamIcon2 stateMk" style="display:none" id="mkState${i.userId}"></i><span class="material-symbols-outlined audioIcon4 stateHead" style="display:none" id="headState${i.userId}">
                     headset_off
                 </span>
                 </div>
@@ -82,7 +82,7 @@ const videoWindow2 = (userId,un,style1,style2,style3)=>{
         </div>
         <div class="videoWindowNameWarpp">
         <div class="videoNameSSS">
-        <span class="videoWindowName">${un}</span><i class="ri-camera-off-fill meetPageCamIcon2 stateCam" style="display:${style1}" id="camState${userId}"></i><i class="ri-mic-off-fill meetPageCamIcon2 stateMk" style="display:${style2}" id="mkState${userId}"></i><span class="material-symbols-outlined audioIcon4 stateHead" style="display:${style3}" id="headState${userId}">
+        <span class="videoWindowName">${un}</span><i class="ri-camera-off-fill meetPageCamIcon2 stateCam" style="display:none" id="camState${userId}"></i><i class="ri-mic-off-fill meetPageCamIcon2 stateMk" style="display:none" id="mkState${userId}"></i><span class="material-symbols-outlined audioIcon4 stateHead" style="display:none" id="headState${userId}">
         headset_off
     </span>
     </div>

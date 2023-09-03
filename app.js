@@ -25,7 +25,7 @@ let roomList = [ {
     roomName: 'seccamp23 Meet',
     host: '36019a51-1371-4d43-8521-76cde88c7a61',
     pass: 'aa',
-    userList: ["a",],
+    userList: [],
     public: true,
     icon:"/public/icons/icon1.png"
   }]
@@ -304,6 +304,9 @@ io.on("connection",(socket)=>{
         io.to(data.roomId).emit("mediaChange",data)
     })
     socket.on("sendMedias",(data)=>{
+        io.to(roomID).emit("sendMediaReturn",data)
+    })
+    socket.on("sendMedias2",(data)=>{
         io.to(data.userId).emit("sendMediaReturn",data)
     })
     socket.on("disconnect",()=>{
