@@ -76,6 +76,7 @@ Socket.on("userDiscon",(data)=>{
 let camFlg = window.sessionStorage.getItem(["cam"])
 let mikeFlg = window.sessionStorage.getItem(["mike"])
 let headFlg = window.sessionStorage.getItem(["audio"])
+let capFLG = false
 let camStyle = "none"
 let mkStyle = "none"
 let headStyle = "none"
@@ -232,10 +233,15 @@ const changeMike = ()=>{
             mikeButton.textContent = "OFF"
             mikeButton.style.color = "#ff3838"
         }
-        let tracks = mikeStream.getTracks()
-        tracks.forEach((i)=>{
-            i.stop()
-        })
+        let tracks; 
+        try{
+            tracks = mikeStream.getTracks()
+            tracks.forEach((i)=>{
+                i.stop()
+            })
+        }catch{
+            
+        }
         mikeStream = null
     }else{
         mikeFlg = true
