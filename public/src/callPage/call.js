@@ -321,7 +321,10 @@ const changeMike = ()=>{
 
 const camChange = ()=>{
     let myVideo = document.getElementById("myVideo")
-
+    if(capFLG){
+        capFLG = false
+        CapOFF()
+    }
     if(camFlg){
         camFlg = false
         sendState("cam",false)
