@@ -172,6 +172,7 @@ peer.on("call",(call)=>{
     //     }
     // })
     call.on("stream",(stream)=>{
+        console.log("greglpre@gkl@pergerjhiepojhepjio")
         if(stream.getVideoTracks().length > 0){
             streamList.push({userId:call.peer,stream:stream})
             console.log(streamList)

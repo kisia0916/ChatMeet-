@@ -53,9 +53,12 @@
 
             </div>
             <button class="audioMuteButton" onclick="changeCap()" style="z-index:1">
-                <span class="material-symbols-outlined" style="margin: auto;">
+                <span class="material-symbols-outlined screenOnIcon" style="margin: auto;">
                     screenshot_monitor
                     </span>
+                    <span class="material-symbols-outlined screenOffIcon" style="margin: auto; display:none">
+                        desktop_access_disabled
+                        </span>
             </button>
             <div class="buttonSpace">
 
@@ -81,7 +84,7 @@
                 <button class="camChangeButton" onclick="camChange()"><i
                         class="ri-vidicon-fill meetPageCamIcon"></i><span class="camChangeText">ON</span></button>
             </div>
-            <div class="mikeChangeButtonWarpp">
+            <div class="mikeChangeButtonWarpp screenChangeButton">
                 <button class="mikeChangeButton" onclick="changeMike()"><i
                         class="ri-mic-fill meetPageMikeIcon"></i><span class="mikeChangeText">ON</span></button>
             </div>
@@ -94,7 +97,6 @@
 
 
     <script src="/public/doms/audioDoms.js"></script>
-
     <script src="/public/src/callPage/call.js"></script>
     <script src="/public/src/callPage/p2p.js"></script>
     <script src="/public/src/callPage/capScreem.js"></script>

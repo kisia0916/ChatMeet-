@@ -1,3 +1,13 @@
+let ua = window.navigator.userAgent.toLowerCase();
+let ScreenIcon = document.querySelector(".screenChangeButton")
+if(ua.indexOf("windows nt") !== -1) {
+} else if(ua.indexOf("android") !== -1) {
+    ScreenIcon.style.display = "none"
+} else if(ua.indexOf("iphone") !== -1 || ua.indexOf("ipad") !== -1) {
+    ScreenIcon.style.display = "none"
+} else if(ua.indexOf("mac os x") !== -1) {
+} else {
+}
 let userId = document.getElementById("userId").textContent
 let roomId = document.getElementById("roomId").textContent
 console.log(userId,roomId)
