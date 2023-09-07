@@ -1,4 +1,4 @@
-const domain = "https://chatm-dffac3792890.herokuapp.com/join/"
+const domain = "https://chatmeets-968bafc8ce75.herokuapp.com/join/"
 function sanitizeInput(input) {
     // 文字列内の特殊文字をエスケープします
     return input.replace(/[&<>"'/]/g, (match) => {
