@@ -23,7 +23,7 @@ window.addEventListener('popstate', function(event) {
     location.href = "/main"
  });
  window.addEventListener("offline", function() {
-    location.href = "/main"
+    // location.href = "/main"
    });
 Socket.emit("connectionMeet",{roomId:roomId,userId:userId})
 Socket.on("userDiscon",(data)=>{
