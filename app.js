@@ -64,160 +64,168 @@ app.get("/joinset/:id",(req,res)=>{
 
 })
 app.get("/mkcall",(req,res)=>{
-    if(!req.session.userId){
-        req.session.userId = uuidv4()
-    }
-    let renderPage = ejs.render(createPage,{
-        userId:req.session.userId
-    })
-    res.writeHead(200,{"Content-Type":"text/html"})
-    res.write(renderPage)
-    res.end()
-})
-app.get("/join/:id",(req,res)=>{
-    let roomFlg = false
-    roomList.forEach((i)=>{
-        if(i.roomId == req.params.id){
-            roomFlg = true
-        }
-    })
-    if(roomFlg){
-        let roomId = req.params.id
-        let userId = ""
-        let roomName;
-        roomList.forEach((i)=>{
-            if(i.roomId == roomId){
-                roomName = i.roomName
-            }
-        })
+    try{
         if(!req.session.userId){
             req.session.userId = uuidv4()
-            userId = req.session.userId
-        }else{
-            userId = req.session.userId
         }
-        req.session.callFlg = true
-        console.log("gg")
-        console.log(roomId)
-        let renderPage = ejs.render(joinPage,{
-            roomName:roomName,
-            roomId:roomId,
-            userId:userId
+        let renderPage = ejs.render(createPage,{
+            userId:req.session.userId
         })
         res.writeHead(200,{"Content-Type":"text/html"})
         res.write(renderPage)
         res.end()
-    }else{
-        res.writeHead(302, {
-            'Location': '/main'
-        });
-        res.end();
-    }
-
+    }catch{}
 })
-app.get("/call/:id",(req,res)=>{
-    console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-    let isRoom = true
-    let isPNum = true
-    let room = null
-    roomList.forEach((i)=>{
-        if(i.roomId == req.params.id){
-            room = i.userList
-            if(i.userList.length>=7){
-                isPNum = false
-            }
-        }
-    })
-    console.log(room)
-    if(room){
-        room.forEach((i)=>{
-            if(i.userId == req.session.userId){
-                isRoom = false
-            }
-        })
-    }
-    if(req.session.userId && req.session.callFlg && isRoom && isPNum){
-        req.session.callFlg = false
-        let roomId = req.params.id
-        console.log(roomId)
-        let co = 0
-        let roomName;
+app.get("/join/:id",(req,res)=>{
+    try{
+        let roomFlg = false
         roomList.forEach((i)=>{
-            if(i.roomId == roomId){
-                roomName = i.roomName
+            if(i.roomId == req.params.id){
+                roomFlg = true
             }
         })
-        console.log("ggggggggggggg")
-        console.log(roomList)
-        roomList.forEach((i)=>{
-            if(i.roomId == roomId){
-                co+=1
-            }
-        })
-        if(co != 0){
-            console.log("a")
-            if(req.session.userId){
-                let renderPage = ejs.render(callPage,{
-                    userId:req.session.userId,
-                    roomId:roomId,
-                    flg:false,
-                    roomName:roomName
-                })
-                res.writeHead(200,{"Content-Type":"text/html"})
-                res.write(renderPage)
-                res.end()
-            }else{
-                console.log("uuuuuuuuuuuuuuuuuuuuuuuuuuuuu")
+        if(roomFlg){
+            let roomId = req.params.id
+            let userId = ""
+            let roomName;
+            roomList.forEach((i)=>{
+                if(i.roomId == roomId){
+                    roomName = i.roomName
+                }
+            })
+            if(!req.session.userId){
                 req.session.userId = uuidv4()
-                let renderPage = ejs.render(callPage,{
-                    userId:req.session.userId,
-                    roomId:roomId,
-                    flg:true
-                })
-                res.writeHead(200,{"Content-Type":"text/html"})
-                res.write(renderPage)
-                res.end()
+                userId = req.session.userId
+            }else{
+                userId = req.session.userId
             }
+            req.session.callFlg = true
+            console.log("gg")
+            console.log(roomId)
+            let renderPage = ejs.render(joinPage,{
+                roomName:roomName,
+                roomId:roomId,
+                userId:userId
+            })
+            res.writeHead(200,{"Content-Type":"text/html"})
+            res.write(renderPage)
+            res.end()
         }else{
-            console.log("koxa")
             res.writeHead(302, {
                 'Location': '/main'
             });
             res.end();
         }
-    }else{
-        console.log("b")
-        res.writeHead(302, {
-            'Location': '/main'
-        });
-        res.end();
-    }
-
+    }catch{}
+})
+app.get("/call/:id",(req,res)=>{
+    try{
+        console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+        let isRoom = true
+        let isPNum = true
+        let room = null
+        roomList.forEach((i)=>{
+            if(i.roomId == req.params.id){
+                room = i.userList
+                if(i.userList.length>=7){
+                    isPNum = false
+                }
+            }
+        })
+        console.log(room)
+        if(room){
+            room.forEach((i)=>{
+                if(i.userId == req.session.userId){
+                    isRoom = false
+                }
+            })
+        }
+        if(req.session.userId && req.session.callFlg && isRoom && isPNum){
+            req.session.callFlg = false
+            let roomId = req.params.id
+            console.log(roomId)
+            let co = 0
+            let roomName;
+            roomList.forEach((i)=>{
+                if(i.roomId == roomId){
+                    roomName = i.roomName
+                }
+            })
+            console.log("ggggggggggggg")
+            console.log(roomList)
+            roomList.forEach((i)=>{
+                if(i.roomId == roomId){
+                    co+=1
+                }
+            })
+            if(co != 0){
+                console.log("a")
+                if(req.session.userId){
+                    let renderPage = ejs.render(callPage,{
+                        userId:req.session.userId,
+                        roomId:roomId,
+                        flg:false,
+                        roomName:roomName
+                    })
+                    res.writeHead(200,{"Content-Type":"text/html"})
+                    res.write(renderPage)
+                    res.end()
+                }else{
+                    console.log("uuuuuuuuuuuuuuuuuuuuuuuuuuuuu")
+                    req.session.userId = uuidv4()
+                    let renderPage = ejs.render(callPage,{
+                        userId:req.session.userId,
+                        roomId:roomId,
+                        flg:true
+                    })
+                    res.writeHead(200,{"Content-Type":"text/html"})
+                    res.write(renderPage)
+                    res.end()
+                }
+            }else{
+                console.log("koxa")
+                res.writeHead(302, {
+                    'Location': '/main'
+                });
+                res.end();
+            }
+        }else{
+            console.log("b")
+            res.writeHead(302, {
+                'Location': '/main'
+            });
+            res.end();
+        }
+    }catch{}
 })
 app.get("/catchpage",(req,res)=>{
-    let renderPage = ejs.render(catchPage,{
+    try{
+        let renderPage = ejs.render(catchPage,{
 
-    })
-    res.writeHead(200,{"Content-Type":"text/html"})
-    res.write(renderPage)
-    res.end()
+        })
+        res.writeHead(200,{"Content-Type":"text/html"})
+        res.write(renderPage)
+        res.end()
+    }catch{}
 })
 app.get("/main",(req,res)=>{
-    console.log(req.session.userId)
-    if(!req.session.userId){
-        req.session.userId = uuidv4()
-    }
-    let sendRoomList = roomList.map((i)=>{
-        if(i.public){
-            return i
+    try{
+        console.log(req.session.userId)
+        if(!req.session.userId){
+            req.session.userId = uuidv4()
         }
-    })
-    let renderPage = ejs.render(mainPage,{
-        userId:req.session.userId,
-    })
-    res.writeHead(200,{"Content-Type":"text/html"})
-    res.write(renderPage)
-    res.end()
+        let sendRoomList = roomList.map((i)=>{
+            if(i.public){
+                return i
+            }
+        })
+        let renderPage = ejs.render(mainPage,{
+            userId:req.session.userId,
+        })
+        res.writeHead(200,{"Content-Type":"text/html"})
+        res.write(renderPage)
+        res.end()
+    }catch{}
 }) 
 app.use((req, res, next) => {
     let renderPage = ejs.render(notFound,{
@@ -231,48 +239,53 @@ io.on("connection",(socket)=>{
     let userId = ""
     let roomID = ""
     socket.on("createdSocketConnection",(data)=>{////////////////socketに接続したら最初はこの処理を行う
-        socket.join(data.userId)
-        userId = data.userId
-        let co = 0
-        userList.forEach((i)=>{
-            if(i.userId == userId){
-                co+=1
-            }
-        })
-        if(co == 0){
-            console.log("debug")
-            userList.push(createData.createUser(userId,data.page))
-            console.log(userList)
-        }
-        if(data.page == "/main"){
-            let publicRoomList = roomList.map((i)=>{
-                if(i.public){
-                    return i
+        try{
+            socket.join(data.userId)
+            userId = data.userId
+            let co = 0
+            userList.forEach((i)=>{
+                if(i.userId == userId){
+                    co+=1
                 }
             })
-            io.to(data.userId).emit("conMain",{roomList:publicRoomList})
-        }
+            if(co == 0){
+                console.log("debug")
+                userList.push(createData.createUser(userId,data.page))
+                console.log(userList)
+            }
+            if(data.page == "/main"){
+                let publicRoomList = roomList.map((i)=>{
+                    if(i.public){
+                        return i
+                    }
+                })
+                io.to(data.userId).emit("conMain",{roomList:publicRoomList})
+            }
+        }catch{}
     })
     socket.on("createRoom",(data)=>{
-        let host = data.host
-        let roomName = data.roomName
-        let pass = data.pass
-        let co = 0
-        let userName = ""
-        roomList.forEach((i)=>{
-            if(i.host == userId){
-                co+=1
+        try{
+            let host = data.host
+            let roomName = data.roomName
+            let pass = data.pass
+            let co = 0
+            let userName = ""
+            roomList.forEach((i)=>{
+                if(i.host == userId){
+                    co+=1
+                }
+            })
+            if(co == 0){
+                roomList.push(createData.createRoomData(host,pass,roomName,true))
+                io.to(userId).emit("roomDatas",{id:roomList[roomList.length-1].roomId})
+                console.log(roomList)
+            }else{
+                io.to(userId).emit("createError","error1")
             }
-        })
-        if(co == 0){
-            roomList.push(createData.createRoomData(host,pass,roomName,true))
-            io.to(userId).emit("roomDatas",{id:roomList[roomList.length-1].roomId})
-            console.log(roomList)
-        }else{
-            io.to(userId).emit("createError","error1")
-        }
+        }catch{}
     })
     socket.on("connectionMeet",(data)=>{
+        try{
             console.log("debug23")
             console.log(data.roomId)
             io.to(data.roomId).emit("joinUser",{userId:userId,listData:createData.createRoomUser(data.roomId,userId,userName,null)})
@@ -291,67 +304,80 @@ io.on("connection",(socket)=>{
                     io.to(userId).emit("setUserNew",{userId:userId,userList:i.userList})
                 }
             })
+        }catch{}
     })
     socket.on("camState",(data)=>{
-        let userId = data.userId
-        let roomId = data.roomId
-        if(data.flg){
-            io.to(roomId).emit("camState",{userId:data.userId,flg:true})
-        }else{
-            io.to(roomId).emit("camState",{userId:data.userId,flg:false})
-        }
+        try{
+            let userId = data.userId
+            let roomId = data.roomId
+            if(data.flg){
+                io.to(roomId).emit("camState",{userId:data.userId,flg:true})
+            }else{
+                io.to(roomId).emit("camState",{userId:data.userId,flg:false})
+            }
+        }catch{}
     })
     socket.on("mikeState",(data)=>{
         
     })
     socket.on("joinUser",(data)=>{
-        userName = data.userName
-        io.to(userId).emit("moveCall",{})
+        try{
+            userName = data.userName
+            io.to(userId).emit("moveCall",{})
+        }catch{}
     })
     socket.on("soundAudio",(data)=>{
         
     })
     socket.on("mediaState",(data)=>{
         console.log("socketlllllll")
-        console.log(data.roomId)
-        io.to(data.roomId).emit("mediaChange",data)
+        try{
+            console.log(data.roomId)
+            io.to(data.roomId).emit("mediaChange",data)
+        }catch{}
     })
     socket.on("sendMedias",(data)=>{
-        io.to(roomID).emit("sendMediaReturn",data)
+        try{
+            io.to(roomID).emit("sendMediaReturn",data)
+        }catch{}
     })
     socket.on("sendMedias2",(data)=>{
-        io.to(data.userId).emit("sendMediaReturn",data)
+        try{
+            io.to(data.userId).emit("sendMediaReturn",data)
+        }catch{}
     })
     socket.on("disconnect",()=>{
         roomId = ""
-        userList.forEach((i,index)=>{
-            if(i.userId == userId){
-                userList.splice(index,1)
-                console.log(userList)
-            }
-        })
-        if(roomID){
-            roomList.forEach((i,index)=>{
-                if(i.roomId == roomID){
-                    i.userList.forEach((h,index2)=>{
-                        if(h.userId == userId){
-                            i.userList.splice(index2,1)
-                            
-                            console.log(i.userList)
-                            if(i.userList.length<=0){
-                                roomList.splice(index,1)
-                                console.log(roomList)
-                            }else{
-                                io.to(i.roomId).emit("userDiscon",{data:userId})
-                            }
-                        }
-                    })
+        try{
+            userList.forEach((i,index)=>{
+                if(i.userId == userId){
+                    userList.splice(index,1)
+                    console.log(userList)
                 }
             })
-        }
+            if(roomID){
+                roomList.forEach((i,index)=>{
+                    if(i.roomId == roomID){
+                        i.userList.forEach((h,index2)=>{
+                            if(h.userId == userId){
+                                i.userList.splice(index2,1)
+                                
+                                console.log(i.userList)
+                                if(i.userList.length<=0){
+                                    roomList.splice(index,1)
+                                    console.log(roomList)
+                                }else{
+                                    io.to(i.roomId).emit("userDiscon",{data:userId})
+                                }
+                            }
+                        })
+                    }
+                })
+            }
+        }catch(error){console.log(error)}
     })
-    console.log("aaasasa")
-    console.log(roomList)
+        // console.log("aaasasa")
+        // console.log(roomList)
 })
 server.listen(process.env.PORT||3000,()=>{
     console.log("server run")
