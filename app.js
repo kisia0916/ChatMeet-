@@ -74,7 +74,7 @@ app.get("/mkcall",(req,res)=>{
         res.writeHead(200,{"Content-Type":"text/html"})
         res.write(renderPage)
         res.end()
-    }catch{}
+    }catch(error){console.log(error)}
 })
 app.get("/join/:id",(req,res)=>{
     try{
@@ -116,7 +116,7 @@ app.get("/join/:id",(req,res)=>{
             });
             res.end();
         }
-    }catch{}
+    }catch(error){console.log(error)}
 })
 app.get("/call/:id",(req,res)=>{
     try{
@@ -196,7 +196,7 @@ app.get("/call/:id",(req,res)=>{
             });
             res.end();
         }
-    }catch{}
+    }catch(error){console.log(error)}
 })
 app.get("/catchpage",(req,res)=>{
     try{
@@ -206,7 +206,7 @@ app.get("/catchpage",(req,res)=>{
         res.writeHead(200,{"Content-Type":"text/html"})
         res.write(renderPage)
         res.end()
-    }catch{}
+    }catch(error){console.log(error)}
 })
 app.get("/main",(req,res)=>{
     try{
@@ -225,7 +225,7 @@ app.get("/main",(req,res)=>{
         res.writeHead(200,{"Content-Type":"text/html"})
         res.write(renderPage)
         res.end()
-    }catch{}
+    }catch(error){console.log(error)}
 }) 
 app.use((req, res, next) => {
     let renderPage = ejs.render(notFound,{
@@ -261,7 +261,7 @@ io.on("connection",(socket)=>{
                 })
                 io.to(data.userId).emit("conMain",{roomList:publicRoomList})
             }
-        }catch{}
+        }catch(error){console.log(error)}
     })
     socket.on("createRoom",(data)=>{
         try{
@@ -282,7 +282,7 @@ io.on("connection",(socket)=>{
             }else{
                 io.to(userId).emit("createError","error1")
             }
-        }catch{}
+        }catch(error){console.log(error)}
     })
     socket.on("connectionMeet",(data)=>{
         try{
@@ -304,7 +304,7 @@ io.on("connection",(socket)=>{
                     io.to(userId).emit("setUserNew",{userId:userId,userList:i.userList})
                 }
             })
-        }catch{}
+        }catch(error){console.log(error)}
     })
     socket.on("camState",(data)=>{
         try{
@@ -315,7 +315,7 @@ io.on("connection",(socket)=>{
             }else{
                 io.to(roomId).emit("camState",{userId:data.userId,flg:false})
             }
-        }catch{}
+        }catch(error){console.log(error)}
     })
     socket.on("mikeState",(data)=>{
         
@@ -324,7 +324,7 @@ io.on("connection",(socket)=>{
         try{
             userName = data.userName
             io.to(userId).emit("moveCall",{})
-        }catch{}
+        }catch(error){console.log(error)}
     })
     socket.on("soundAudio",(data)=>{
         
@@ -334,17 +334,17 @@ io.on("connection",(socket)=>{
         try{
             console.log(data.roomId)
             io.to(data.roomId).emit("mediaChange",data)
-        }catch{}
+        }catch(error){console.log(error)}
     })
     socket.on("sendMedias",(data)=>{
         try{
             io.to(roomID).emit("sendMediaReturn",data)
-        }catch{}
+        }catch(error){console.log(error)}
     })
     socket.on("sendMedias2",(data)=>{
         try{
             io.to(data.userId).emit("sendMediaReturn",data)
-        }catch{}
+        }catch(error){console.log(error)}
     })
     socket.on("disconnect",()=>{
         roomId = ""
