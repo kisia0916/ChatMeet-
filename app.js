@@ -49,7 +49,19 @@ app.use(body_pase.json());//////////////////////////////   ここ重要
 app.use(body_pase.urlencoded({ extended: true }));//////
 app.use(express.static(path.join(__dirname, "js")));
 app.use("/public",express.static("public"))
-
+function forceHttps(req, res, next){
+    if (!process.env.PORT) {
+      return next();
+    };
+  
+    if (req.headers['x-forwarded-proto'] && req.headers['x-forwarded-proto'] === "http") {
+      res.redirect('https://' + req.headers.host + req.url);
+    }else {
+      return next();
+    }
+  };
+  
+app.all('*', forceHttps);
 
 app.get("/",(req,res)=>{
     console.log("index")
