@@ -261,7 +261,7 @@ io.on("connection",(socket)=>{
                     }
                 })
                 publicRoomList.forEach((i,index)=>{
-                    if(!i){
+                    if(i == null){
                         publicRoomList.splice(index,1)
                     }
                 })
