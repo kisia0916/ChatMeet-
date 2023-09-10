@@ -290,7 +290,6 @@ const changeMike = ()=>{
                         // Socket.emit("soundAudio",{userId:userId,roomId:roomId})
                         soundAudioFLG = true
                         myWarpp.style.border = "solid 1px #50FA7B"
-                        console.log("音声を検知")
                         sendMess()
                     }
                     // mikeStream = stream
@@ -299,7 +298,6 @@ const changeMike = ()=>{
                     if(soundAudioFLG){
                         soundAudioFLG = false
                         myWarpp.style.border = "none"
-                        console.log("オフを検知")
 
                         sendMess()
                     }
