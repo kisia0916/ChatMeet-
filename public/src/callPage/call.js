@@ -178,7 +178,6 @@ const audioInit = (flg)=>{
                             myWarpp.style.border = "solid 1px #50FA7B"
                         sendMess()
                         }
-                        console.log("音声を検知")
                     }
                     // mikeStream = stream
                 }else{
@@ -186,7 +185,6 @@ const audioInit = (flg)=>{
                     if(soundAudioFLG){
                         soundAudioFLG = false
                         myWarpp.style.border = "none"
-                        console.log("オフを検知")
 
                         sendMess()
                     }
