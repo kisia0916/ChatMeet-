@@ -15,7 +15,6 @@ const createRoom = ()=>{
     let roomPass = document.getElementById("createRoomPass").value
     let maxNum = Number(document.querySelector(".createSelect").value)
     let private = document.querySelector(".privateBox").checked
-    alert(private)
     if(roomName){
         Socket.emit("createRoom",{host:userId,roomName:roomName,pass:roomPass,max:maxNum,private:private})
     }
