@@ -28,7 +28,8 @@ let roomList = [ {
     pass: 'aa',
     userList: [],
     public: true,
-    icon:"/public/icons/icon1.png"
+    icon:"/public/icons/icon1.png",
+    maxPlayer:6
   }]
 
 
@@ -127,7 +128,7 @@ app.get("/call/:id",(req,res)=>{
         roomList.forEach((i)=>{
             if(i.roomId == req.params.id){
                 room = i.userList
-                if(i.userList.length>=7){
+                if(i.userList.length>=i.maxPlayer){
                     isPNum = false
                 }
             }
@@ -255,8 +256,13 @@ io.on("connection",(socket)=>{
             }
             if(data.page == "/main"){
                 let publicRoomList = roomList.map((i)=>{
-                    if(i.public){
+                    if(i.public || i.host == userId){
                         return i
+                    }
+                })
+                publicRoomList.forEach((i,index)=>{
+                    if(!i){
+                        publicRoomList.splice(index,1)
                     }
                 })
                 io.to(data.userId).emit("conMain",{roomList:publicRoomList})
@@ -268,6 +274,8 @@ io.on("connection",(socket)=>{
             let host = data.host
             let roomName = data.roomName
             let pass = data.pass
+            let max = data.max
+            let private = data.private
             let co = 0
             let userName = ""
             roomList.forEach((i)=>{
@@ -276,7 +284,10 @@ io.on("connection",(socket)=>{
                 }
             })
             if(co == 0){
-                roomList.push(createData.createRoomData(host,pass,roomName,true))
+                if(max>=7){
+                    max = 6
+                }
+                roomList.push(createData.createRoomData(host,pass,roomName,!private,max))
                 io.to(userId).emit("roomDatas",{id:roomList[roomList.length-1].roomId})
                 console.log(roomList)
             }else{

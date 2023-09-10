@@ -49,6 +49,7 @@ body{
     color: white;
     border: solid 1px #edff57;
     font-size: 120%;
+    margin-bottom: 15px;
 }
 .createButton{
     font-family: 'Kanit', sans-serif;
@@ -67,4 +68,27 @@ body{
     color: #edff57;
     font-size: 108%;
     margin-bottom: 3px;
+}
+.createSelect{
+    border-radius: 4px;
+    background-color: #282a36;
+    border: solid 1px #edff57;
+    color: white;
+    width: 45px;
+    margin-left: 10px;
+}
+.maxUserText{
+    color: #edff57;
+    font-size: 108%;
+    padding-bottom: 30px;
+}
+.maxUserText2{
+    color: #edff57;
+    font-size: 108%;
+    padding-bottom: 30px;
+    margin-left: 20px;
+}
+.privateBox{
+    background-color: #41434b46;
+    border: solid 1px #edff57;
 }
