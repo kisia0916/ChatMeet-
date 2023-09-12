@@ -10,7 +10,6 @@ if(ua.indexOf("windows nt") !== -1) {
 }
 let userId = document.getElementById("userId").textContent
 let roomId = document.getElementById("roomId").textContent
-console.log(userId,roomId)
 let flg = document.getElementById("flg").textContent
 if(flg){
     Socket.emit("createdSocketConnection",{userId:userId,page:"/call"})
@@ -31,18 +30,15 @@ Socket.on("userDiscon",(data)=>{
     let disconVideo = document.getElementById(`2video:${data.data}`)
     let disconAudio = document.getElementById(`audio:${data.data}`)
 
-    console.log(disconVideo.classList)
     disconVideo.remove()
     disconAudio.remove()
     // if(disconVideo.classList.length>1){
     let warpp = document.querySelector(".roomCenterMain")
     let firstChild = warpp.querySelector(':first-child');
-    console.log(firstChild)
     firstChild.classList.add("firstVideo")
     // }
     let warpp2 = document.getElementById("audioWindowsWaerpp")
     let firstChild2 = warpp2.querySelector(':first-child');
-    console.log(firstChild2)
     firstChild2.classList.add("firstAudio")
     conList.forEach((i,index)=>{
         if(i.peer == data.data){
@@ -74,12 +70,7 @@ Socket.on("userDiscon",(data)=>{
             userList.splice(index,1)
         }
     })
-    console.log(conList)
-    console.log(streamList)
-    console.log(peerList)
-    console.log(audioTagList)
-    console.log(audioList)
-    console.log(userList)
+
     
 })
 
@@ -91,7 +82,6 @@ let camStyle = "none"
 let mkStyle = "none"
 let headStyle = "none"
 if(window.sessionStorage.getItem(["cam"]) == "true"){
-    console.log("opopopkpokopkopkop")
     camFlg = true
 
 }else{
@@ -123,7 +113,6 @@ if(window.sessionStorage.getItem(["audio"]) == "true"){
     headStyle = "block"
     let audioIcon = document.querySelector(".audioIcon")
     let audioIcon2 = document.querySelector(".audioIcon2")
-    console.log(audioIcon)
     audioIcon.style.display = "none"
     audioIcon2.style.display = "block" 
 }
@@ -132,11 +121,8 @@ let backStream = null
 let mikeStream = null
 let audioTagList = []
 const caminit = (firstFlg)=>{
-    console.log(camFlg)
     if(camFlg){
-        console.log("caminit")
         let myVideo = document.getElementById("myVideo")
-        console.log(myVideo)
         navigator.mediaDevices.getUserMedia({video : camFlg})
         .then((stream)=>{
             camStream = stream
@@ -209,13 +195,11 @@ const audioInit = (flg)=>{
             mediaRecorder.ondataavailable = function(event) {
             if (event.data.size > 0) {
                 // 録音データの処理
-                console.log("4")
             }
             };
         
             mediaRecorder.onstop = function() {
             // 録音停止後の処理
-                console.log("5")
             };
         
             mediaRecorder.start();
@@ -234,7 +218,6 @@ const changeMike = ()=>{
         mikeFlg = false
         sendState("mk",false)
         let mkStateMy = document.getElementById("mkStateMy")
-        console.log(mkStateMy)
         mkStateMy.style.display = "block"
         let mikeButton = document.querySelector(".mikeChangeText")
         if(mikeButton){
@@ -255,7 +238,6 @@ const changeMike = ()=>{
         mikeFlg = true
         sendState("mk",true)
         let mkStateMy = document.getElementById("mkStateMy")
-        console.log(mkStateMy)
         mkStateMy.style.display = "none"
         let mikeButton = document.querySelector(".mikeChangeText")
         if(mikeButton){
@@ -335,7 +317,6 @@ const camChange = ()=>{
         camFlg = false
         sendState("cam",false)
         let mkStateMy = document.getElementById("camStateMy")
-        console.log(mkStateMy)
         mkStateMy.style.display = "block"
         peerList = []
         let camButton = document.querySelector(".camChangeText")
@@ -355,7 +336,6 @@ const camChange = ()=>{
         camFlg = true
         sendState("cam",true)
         let mkStateMy = document.getElementById("camStateMy")
-        console.log(mkStateMy)
         mkStateMy.style.display = "none"
         let camButton = document.querySelector(".camChangeText")
 
@@ -382,18 +362,15 @@ const changeAudios = ()=>{
     if(headFlg){
         sendState("head",false)
         let mkStateMy = document.getElementById("headStateMy")
-        console.log(mkStateMy)
         mkStateMy.style.display = "block"
         audioTagList.forEach((i)=>{
-            console.log(1)
-            console.log(i)
+
             let tag = document.getElementById(i)
             if(tag){
                 tag.muted = true
             }
             let audioIcon = document.querySelector(".audioIcon")
             let audioIcon2 = document.querySelector(".audioIcon2")
-            console.log(audioIcon)
 
             audioIcon.style.display = "none"
             audioIcon2.style.display = "block" 
@@ -402,18 +379,15 @@ const changeAudios = ()=>{
     }else{
         sendState("head",true)
         let mkStateMy = document.getElementById("headStateMy")
-        console.log(mkStateMy)
         mkStateMy.style.display = "none"
         audioTagList.forEach((i)=>{
-            console.log(2)
-            console.log(i)
+
             let tag = document.getElementById(i)
             if(tag){
                 tag.muted = false
             }
             let audioIcon = document.querySelector(".audioIcon")
             let audioIcon2 = document.querySelector(".audioIcon2")
-            console.log(audioIcon)
             audioIcon.style.display = "block"
             audioIcon2.style.display = "none"
             headFlg = true
@@ -431,9 +405,7 @@ const copyId = ()=>{
     navigator.clipboard.writeText(aria).then()
 }
 Socket.on("camState",(data)=>{
-    console.log("aaaaklkkkaiojo")
     let audioDom = document.getElementById("video:"+data.userId)
-    console.log("camState")
     if(audioDom){
         if(data.flg){
             audioDom.style.display = "none"
