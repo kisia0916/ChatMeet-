@@ -1,7 +1,7 @@
 
 let p2pID = document.getElementById("userId").textContent
 let peer = new Peer(p2pID, {
-    host: 'chatpeer.onrender.com',
+    host: 'chatpeer-i46v.onrender.com',
     port: 443,
     path: '/myapp',
     secure: true,
