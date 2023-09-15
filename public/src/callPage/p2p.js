@@ -1,7 +1,7 @@
 
 let p2pID = document.getElementById("userId").textContent
 let peer = new Peer(p2pID, {
-    host: 'peerserverinheroku-2753ea32a44b.herokuapp.com',
+    host: 'chatpeer.onrender.com',
     port: 443,
     path: '/myapp',
     secure: true,
