@@ -1,4 +1,4 @@
-const domain = "https://www.fumiapp.com/join/"
+const domain = "https://chatmeets.onrender.com/join/"
 function sanitizeInput(input) {
     // 文字列内の特殊文字をエスケープします
     return input.replace(/[&<>"'/]/g, (match) => {
