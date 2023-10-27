@@ -91,6 +91,20 @@ exports.createRoomApiFun = (token,roomName,max,private)=>{
         return "Room can only be created"
     }
 }
+exports.getRoomInfoApi = (roomid)=>{
+    let roomIdex = -1
+    roomList.forEach((i,index)=>{
+        if(i.roomId == roomid){
+            roomIdex = index
+        }
+    })
+    if(roomIdex != -1){
+        const listData = roomList[roomIdex]
+        return listData
+    }else{
+        return "undifind"
+    }
+}
 app.get("/",(req,res)=>{
     console.log("index")
     res.writeHead(302, {

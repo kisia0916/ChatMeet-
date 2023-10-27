@@ -55,4 +55,13 @@ router.post("/createroom",async(req,res)=>{
         return res.status(500).json("error")
     }
 })
+router.post("/getroom",async(req,res)=>{
+    try{
+        const roomId = req.body.roomId
+        const data = appFuns.getRoomInfoApi(roomId)
+        return res.status(200).json(data)
+    }catch{
+        return res.status(500).json("error")
+    }
+})
 module.exports = router
