@@ -85,6 +85,7 @@ exports.createRoomApiFun = (token,roomName,max,private)=>{
         console.log(roomList)
         return {
             roomname:roomName,
+            roomId:createdRoomData.roomId,
             joinurl:`https://fumiapp.com/join/${createdRoomData.roomId}`
         }
     }else{
