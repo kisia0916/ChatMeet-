@@ -1,11 +1,11 @@
 const router = require("express").Router()
 const UserToken = require("./models/UserIpTokenModule")
-const {uuidv4} = require("uuid")
+const {v4: uuidv4} = require("uuid")
 router.get("/givetoken",async(req,res)=>{
     const userIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress
     try{
         const isMyIp = await UserToken.find({userIp:userIP})
-        if(!isMyIp){
+        if(isMyIp.length==0){
             const token = uuidv4()
             const newuser = await new UserToken({
                 userIp:userIP,
@@ -20,7 +20,7 @@ router.get("/givetoken",async(req,res)=>{
         }else{
             return res.status(400).json({mess:"finded your ip"})
         }
-    }catch{
+    }catch(error){
         return res.status(500).json("error")
     }
 })
