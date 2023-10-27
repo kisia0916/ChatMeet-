@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon app.js",
-    "p2p":"npx peerjs --port 9000"
+    "p2p": "npx peerjs --port 9000"
   },
   "keywords": [],
   "author": "",
@@ -17,10 +17,11 @@
     "express-session": "^1.17.3",
     "fs": "^0.0.1-security",
     "http": "^0.0.1-security",
+    "mongoose": "^7.6.3",
     "nodemon": "^3.0.1",
     "path": "^0.12.7",
     "peer": "^1.0.0",
     "socket.io": "^4.7.2",
-    "uuid": "^9.0.0"
+    "uuid": "^9.0.1"
   }
 }

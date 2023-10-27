@@ -21,6 +21,9 @@ const notFound = fs.readFileSync("./public/views/notFound.ejs","utf-8")
 const createData = require("./backSrc/createData")
 const apiRouter = require("./public/api/apiRouter")
 
+const mongoose = require("mongoose")
+mongoose.connect("mongodb+srv://fumiharuabe:20080916@cluster0.acrpymu.mongodb.net/chatmeetapi?retryWrites=true&w=majority").then(()=>console.log("connection DB")).catch((error)=>console.log(error))
+
 let userList = []
 let roomList = [ {
     roomId: 'f5934665-bf0d-4356-8777-6a9a25ed1000',
