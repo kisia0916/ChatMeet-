@@ -68,6 +68,29 @@ function forceHttps(req, res, next){
 app.all('*', forceHttps);
 
 app.use("/api",apiRouter)
+exports.createRoomApiFun = (token,roomName,max,private)=>{
+    let co = 0
+    roomList.forEach((i)=>{
+        if(i.host == token){
+            co+=1
+        }
+    })
+    if(co == 0){
+        if(max>=7){
+            max = 6
+        }
+        let pass = "123"
+        let createdRoomData = createData.createRoomData(token,pass,roomName,!private,max)
+        roomList.push(createdRoomData)
+        console.log(roomList)
+        return {
+            roomname:roomName,
+            joinurl:`https://fumiapp.com/join/${createdRoomData.roomId}`
+        }
+    }else{
+        return "Room can only be created"
+    }
+}
 app.get("/",(req,res)=>{
     console.log("index")
     res.writeHead(302, {

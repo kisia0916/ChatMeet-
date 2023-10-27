@@ -1,7 +1,7 @@
 const router = require("express").Router()
 const UserToken = require("./models/UserIpTokenModule")
 const {v4: uuidv4} = require("uuid")
-
+const appFuns = require("../../app")
 router.get("/givetoken",async(req,res)=>{
     try{
         let userIPList = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
@@ -32,6 +32,27 @@ router.get("/givetoken",async(req,res)=>{
         }
     }catch(error){
         return res.status(500).json("error")
+    }
+})
+router.post("/createroom",async(req,res)=>{
+    try{
+        const token = req.body.token
+        const roomNamereq = req.body.roomname
+        const maxUser = Number(req.body.maxuser)
+        const isPublick = !req.body.ispublick
+        if(token && roomNamereq && maxUser && isPublick != undefined){
+            const tokenUser = await UserToken.findOne({token:token})
+            if(tokenUser){
+                const response = appFuns.createRoomApiFun(token,roomNamereq,maxUser,isPublick)
+                return res.status(200).json(response)
+            }else{
+                return res.status(404).json("Invalid token")
+            }
+        }else{
+            return res.status(400).json("no feed")
+        }
+    }catch(error){
+        console.log(error)
     }
 })
 module.exports = router
