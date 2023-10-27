@@ -19,6 +19,7 @@ const joinPage = fs.readFileSync("./public/views/join.ejs","utf-8")
 const notFound = fs.readFileSync("./public/views/notFound.ejs","utf-8")
 
 const createData = require("./backSrc/createData")
+const apiRouter = require("./public/api/apiRouter")
 
 let userList = []
 let roomList = [ {
@@ -63,6 +64,7 @@ function forceHttps(req, res, next){
   
 app.all('*', forceHttps);
 
+app.use("/api",apiRouter)
 app.get("/",(req,res)=>{
     console.log("index")
     res.writeHead(302, {
@@ -240,6 +242,7 @@ app.get("/main",(req,res)=>{
         res.end()
     }catch(error){console.log(error)}
 }) 
+
 app.use((req, res, next) => {
     let renderPage = ejs.render(notFound,{
 
