@@ -2,7 +2,7 @@ const router = require("express").Router()
 const UserToken = require("./models/UserIpTokenModule")
 const {v4: uuidv4} = require("uuid")
 router.get("/givetoken",async(req,res)=>{
-    const userIP = req.headers['x-forwarded-for'] || req.connection.remoteAddress
+    const userIP = req.headers['x-forwarded-for']
     try{
         const isMyIp = await UserToken.find({userIp:userIP})
         if(isMyIp.length==0){
