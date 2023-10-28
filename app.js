@@ -69,13 +69,14 @@ app.all('*', forceHttps);
 
 app.use("/api",apiRouter)
 exports.createRoomApiFun = (token,roomName,max,private)=>{
+    const maxroomcount = 7
     let co = 0
     roomList.forEach((i)=>{
         if(i.host == token){
             co+=1
         }
     })
-    if(co == 0){
+    if(co <= maxroomcount){
         if(max>=7){
             max = 6
         }
@@ -89,7 +90,7 @@ exports.createRoomApiFun = (token,roomName,max,private)=>{
             joinurl:`https://fumiapp.com/join/${createdRoomData.roomId}`
         }
     }else{
-        return "Room can only be created"
+        return "Up to 6 rooms can be created at the same time"
     }
 }
 exports.getRoomInfoApi = (roomid)=>{

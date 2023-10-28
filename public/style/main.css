@@ -13,7 +13,7 @@ a{
 .mainContents{
     max-width: 600px;
     /* background-color: red; */
-    height: 100%;
+    min-height: calc(100vh - 148px);
     margin: auto;
 }
 @media(max-width:500px){
@@ -180,5 +180,4 @@ a{
 .mainClegit{
     font-family: 'Kanit', sans-serif;
     margin:auto;color:rgba(255, 255, 255, 0.563);margin-bottom:10px;font-size:70%;
-    
 }
